@@ -48,6 +48,8 @@
 
 ### SGX Code is being refactored. 
 
+- available in the cosensus/eges folder. 
+
 ### sample commands
 normal nodes       
 ```shell
