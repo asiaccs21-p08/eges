@@ -1,0 +1,16 @@
+//
+// Created by jianyu on 5/19/18.
+//
+
+#ifndef ENCLAVE_ELCTION_OCALL_ELECTION_H
+#define ENCLAVE_ELCTION_OCALL_ELECTION_H
+
+
+#include <stddef.h>
+
+size_t ocall_sendto(int sockfd, const char * buf, int len,
+    int flags, const char* dest, int addrlen);
+
+int ocall_print_string(const char* s);
+
+#endif //ENCLAVE_ELCTION_OCALL_ELECTION_H

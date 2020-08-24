@@ -1,0 +1,13 @@
+#!/bin/bash
+cd enclave
+rm CMakeCache.txt
+rm -rf CMakeFiles
+rm cmake_install.cmake
+
+cd ../
+rm CMakeCache.txt
+rm -rf CMakeFiles
+rm cmake_install.cmake
+rm install_manifest.txt 
+
+find ./ -name "*.cbp" -delete

@@ -1,0 +1,36 @@
+
+enclave {
+
+    include "metadata.h"
+
+    from "sgx_tstdc.edl" import sgx_thread_wait_untrusted_event_ocall, sgx_thread_set_untrusted_event_ocall, sgx_thread_setwait_untrusted_events_ocall, sgx_thread_set_multiple_untrusted_events_ocall;
+
+    trusted {
+
+        public void* api_new_node([user_check] Term_t* term, [user_check] char** ipstrs, [user_check] int* ports,
+                          int offset, [user_check] char* my_account,
+                          int commitee_count, uint64_t start_blk, uint64_t term_len);
+
+        public int api_elect([user_check]Term_t* term, uint64_t blk, [user_check] uint64_t* rand, int timeout);
+
+        public int api_kill_group([user_check] Term_t* term);
+
+        public int event_handle_prepare([user_check] Message *msg, [user_check] void* si_other, [user_check]Term_t *term, unsigned int si_len);
+
+        public int event_handle_prepared([user_check] Message *msg, [user_check] void* si_other, [user_check]Term_t *term);
+
+        public int event_handle_confirm([user_check] Message *msg, [user_check] void* si_other, [user_check]Term_t *term, unsigned int si_len);
+
+        public int event_handle_confirmed([user_check] Message *msg, [user_check] void* si_other, [user_check]Term_t *term);
+
+        public int event_handle_notify([user_check] Message *msg, [user_check] void* si_other, [user_check]Term_t *term);
+
+        public int event_handle_announce([user_check] Message *msg, [user_check] void* si_other, [user_check]Term_t *term);
+
+    };
+    untrusted {
+        size_t ocall_sendto(int sockfd, [in,count=len] const char * buf, int len,
+                  int flags, [in,count=addrlen] const char* dest, int addrlen);
+        int ocall_print_string([in, string]char* s);
+    };
+};
