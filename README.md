@@ -1,4 +1,6 @@
-### sample genesis.json
+### Code for Eges: Efficient and DoS-resistant Consensus for Permissioned Blockchains
+
+###sample genesis.json
 ```json
 {
     "config": {
